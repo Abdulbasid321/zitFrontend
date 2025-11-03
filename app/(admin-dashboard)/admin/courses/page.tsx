@@ -10,13 +10,21 @@ type Course = {
   courseCode: string;
   courseTitle: string;
   creditUnits: number;
-  lecturer: string; // stores lecturer ID
+  lecturer: string | Lecturer // stores lecturer ID
   level: string;
   semester: string;
-  department: string; // stores department ID
+  department: string | Department; // stores department ID
 };
 
-type Lecturer = { _id: string; name: string };
+// type Lecturer = { _id: string; name: string };
+type Lecturer = {
+  _id: string;
+  name: string;
+  email?: string;
+  phone?: string;
+  department?: string;
+};
+
 type Department = { _id: string; name: string };
 
 const AdminCoursesPage = () => {
@@ -72,28 +80,53 @@ const AdminCoursesPage = () => {
     }
   };
 
+  // const openModal = (course?: Course) => {
+  //   if (course) {
+  //     setEditId(course._id);
+  //     setCourseCode(course.courseCode);
+  //     setCourseTitle(course.courseTitle);
+  //     setCreditUnits(course.creditUnits);
+  //     setLecturer(course.lecturer);
+  //     setLecturer(typeof course.lecturer === 'object' ? course.lecturer._id : course.lecturer);
+
+  //     setLevel(course.level);
+  //     setSemester(course.semester);
+  //     setDepartment(course.department);
+  //   } else {
+  //     setEditId(null);
+  //     setCourseCode('');
+  //     setCourseTitle('');
+  //     setCreditUnits(0);
+  //     setLecturer('');
+  //     setLevel('');
+  //     setSemester('');
+  //     setDepartment('');
+  //   }
+  //   setIsModalOpen(true);
+  // };
+
   const openModal = (course?: Course) => {
-    if (course) {
-      setEditId(course._id);
-      setCourseCode(course.courseCode);
-      setCourseTitle(course.courseTitle);
-      setCreditUnits(course.creditUnits);
-      setLecturer(course.lecturer);
-      setLevel(course.level);
-      setSemester(course.semester);
-      setDepartment(course.department);
-    } else {
-      setEditId(null);
-      setCourseCode('');
-      setCourseTitle('');
-      setCreditUnits(0);
-      setLecturer('');
-      setLevel('');
-      setSemester('');
-      setDepartment('');
-    }
-    setIsModalOpen(true);
-  };
+  if (course) {
+    setEditId(course._id);
+    setCourseCode(course.courseCode);
+    setCourseTitle(course.courseTitle);
+    setCreditUnits(course.creditUnits);
+    setLecturer(typeof course.lecturer === 'object' ? course.lecturer._id : course.lecturer);
+    setLevel(course.level);
+    setSemester(course.semester);
+    setDepartment(typeof course.department === 'object' ? course.department._id : course.department);
+  } else {
+    setEditId(null);
+    setCourseCode('');
+    setCourseTitle('');
+    setCreditUnits(0);
+    setLecturer('');
+    setLevel('');
+    setSemester('');
+    setDepartment('');
+  }
+  setIsModalOpen(true);
+};
 
   const closeModal = () => {
     setIsModalOpen(false);
@@ -174,32 +207,6 @@ const AdminCoursesPage = () => {
         <p>Loading...</p>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {/* {courses.map((course) => (
-            <div key={course._id} className="bg-white p-4 rounded shadow">
-              <h3 className="font-bold text-lg">
-                {course.courseTitle} ({course.courseCode})
-              </h3>
-              <p>Credit Units: {course.creditUnits}</p>
-              <p>Lecturer: {getLecturerName(course.lecturer)}</p>
-              <p>Level: {course.level}</p>
-              <p>Semester: {course.semester}</p>
-              <p>Department: {getDepartmentName(course.department)}</p>
-              <div className="flex gap-3 justify-end mt-2">
-                <button
-                  onClick={() => openModal(course)}
-                  className="text-blue-500 hover:underline"
-                >
-                  Edit
-                </button>
-                <button
-                  onClick={() => handleDelete(course._id)}
-                  className="text-red-500 hover:underline"
-                >
-                  Delete
-                </button>
-              </div>
-            </div>
-          ))} */}
           {courses.map((course) => (
   <div key={course._id} className="bg-white p-4 rounded shadow">
     <h3 className="font-bold text-lg">
@@ -209,15 +216,17 @@ const AdminCoursesPage = () => {
     <p>
       Lecturer:{' '}
       {typeof course.lecturer === 'object'
-        ? course.lecturer?.fullName || course.lecturer?.email || 'N/A'
+        ? course.lecturer?.name || course.lecturer?.email || 'N/A'
         : course.lecturer}
     </p>
-    <p>
+    {/* <p>
       Level:{' '}
       {typeof course.level === 'object'
         ? course.level?.name || 'N/A'
         : course.level}
-    </p>
+    </p> */}
+    <p>Level: {course.level}</p>
+
     <p>Semester: {course.semester}</p>
     <p>
       Department:{' '}

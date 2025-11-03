@@ -23,7 +23,8 @@ const StudentPayments = () => {
     if (!regNumber) return;
 
     axios
-      .get(`http://localhost:5000/payments/student/${regNumber}`)
+      .get(`https://zitapi.onrender.com/payments/student/${regNumber}`)
+      // .get(`http://localhost:5000/payments/student/${regNumber}`)
       .then((res) => setPayments(res.data))
       .catch((err) => console.error('Error fetching payments:', err));
   }, [regNumber]);

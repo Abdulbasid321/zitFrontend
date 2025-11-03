@@ -1,93 +1,3 @@
-// 'use client';
-
-// import React, { useEffect, useState } from 'react';
-
-// interface UploadedDocument {
-//   _id: string;
-//   regNumber: string;
-//   type: string;
-//   fileUrl: string;
-//   fileName: string;
-//   fileType: string;
-//   uploadedAt: string;
-// //   createdAt: string;
-// }
-
-// const AdminDocumentsPage = () => {
-//   const [documents, setDocuments] = useState<UploadedDocument[]>([]);
-//   const [loading, setLoading] = useState<boolean>(true);
-//   const [error, setError] = useState<string | null>(null);
-
-//   useEffect(() => {
-//     const fetchDocuments = async () => {
-//       try {
-//         const res = await fetch('http://localhost:5000/documents/all');
-//         if (!res.ok) throw new Error('Failed to fetch documents');
-
-//         const data = await res.json();
-//         setDocuments(data);
-//       } catch (err: any) {
-//         setError(err.message || 'Something went wrong');
-//       } finally {
-//         setLoading(false);
-//       }
-//     };
-
-//     fetchDocuments();
-//   }, []);
-
-//   return (
-//     <div className="p-6">
-//       <h1 className="text-2xl font-bold mb-4">Uploaded Student Documents</h1>
-
-//       {loading && <p>Loading documents...</p>}
-//       {error && <p className="text-red-500">{error}</p>}
-
-//       {!loading && !error && (
-//         <div className="overflow-x-auto">
-//           <table className="min-w-full bg-white shadow-md rounded-lg overflow-hidden">
-//             <thead className="bg-blue-600 text-white">
-//               <tr>
-//                 <th className="py-3 px-4 text-left">Reg Number</th>
-//                 <th className="py-3 px-4 text-left">Type</th>
-//                 <th className="py-3 px-4 text-left">File</th>
-//                 <th className="py-3 px-4 text-left">Uploaded At</th>
-//               </tr>
-//             </thead>
-//             <tbody>
-//               {documents.map((doc) => (
-//                 <tr key={doc._id} className="border-b hover:bg-gray-50">
-//                   <td className="py-2 px-4">{doc.regNumber}</td>
-//                   <td className="py-2 px-4 capitalize">{doc.type}</td>
-//                   <td className="py-2 px-4">
-//                     <a
-//                       href={doc.fileUrl}
-//                       target="_blank"
-//                       rel="noopener noreferrer"
-//                       className="text-blue-600 underline"
-//                     >
-//                       {doc.fileName}
-//                     </a>
-//                   </td>
-//                   <td className="py-2 px-4">{new Date(doc.uploadedAt).toLocaleString()}</td>
-//                 </tr>
-//                     //   <p>Uploaded: {new Date(doc.uploadedAt).toLocaleDateString()}</p>
-//               ))}
-//             </tbody>
-//           </table>
-
-//           {documents.length === 0 && (
-//             <p className="text-center mt-4 text-gray-600">No documents uploaded yet.</p>
-//           )}
-//         </div>
-//       )}
-//     </div>
-//   );
-// };
-
-// export default AdminDocumentsPage;
-
-
 'use client';
 
 import React, { useEffect, useState } from 'react';
@@ -110,7 +20,8 @@ const AdminDocumentsPage = () => {
   useEffect(() => {
     const fetchDocuments = async () => {
       try {
-        const res = await fetch('http://localhost:5000/documents/all');
+        const res = await fetch('https://zitapi.onrender.com/documents/all');
+        // const res = await fetch('http://localhost:5000/documents/all');
         if (!res.ok) throw new Error('Failed to fetch documents');
 
         const data = await res.json();

@@ -19,7 +19,8 @@ const AdminFeesPage = () => {
   useEffect(() => {
     const fetchPayments = async () => {
       try {
-        const res = await fetch('http://localhost:5000/payments'); // ✅ match backend route
+        const res = await fetch('https://zitapi.onrender.com/payments'); // ✅ match backend route
+        // const res = await fetch('http://localhost:5000/payments'); // ✅ match backend route
         if (!res.ok) throw new Error('Failed to fetch payments');
         const data = await res.json();
         setPayments(data);

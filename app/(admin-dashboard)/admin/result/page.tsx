@@ -28,12 +28,6 @@ export default function UploadResultBulk() {
   setUploadStatus({});
   setMessage("");
 
-  // const formData = new FormData();
-
-  // // Add all files with the same field name: "results"
-  // files.forEach((file) => {
-  //   formData.append("results", file); // ✅ match backend
-  // });
   const formData = new FormData();
 
 files.forEach((file) => {
@@ -49,8 +43,8 @@ files.forEach((file) => {
   formData.append("regNumber", regNumber); // ✅ backend expects this
 
   try {
-    // const res = await fetch("https://istiqamauni-1.onrender.com/uploadResult", {
-    const res = await fetch("http://localhost:5000/uploadResult", {
+    const res = await fetch("https://zitapi.onrender.com/uploadResult", {
+    // const res = await fetch("http://localhost:5000/uploadResult", {
       method: "POST",
       body: formData,
     });

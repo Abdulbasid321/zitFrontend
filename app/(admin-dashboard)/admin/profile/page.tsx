@@ -43,7 +43,8 @@ const AdminProfilePage = () => {
     (async () => {
       setLoading(true);
       try {
-        const res = await fetch(`http://localhost:5000/admin/${adminId}`);
+        const res = await fetch(`https://zitapi.onrender.com/admin/${adminId}`);
+        // const res = await fetch(`http://localhost:5000/admin/${adminId}`);
         if (!res.ok) throw new Error('Could not fetch profile');
         const data: Admin = await res.json();
         setAdmin(data);
@@ -63,7 +64,8 @@ const AdminProfilePage = () => {
   const handleSave = async () => {
     if (!adminId) return;
     try {
-      const res = await fetch(`http://localhost:5000/admin/${adminId}`, {
+      const res = await fetch(`https://zitapi.onrender.com/admin/${adminId}`, {
+      // const res = await fetch(`http://localhost:5000/admin/${adminId}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(updatedAdmin),

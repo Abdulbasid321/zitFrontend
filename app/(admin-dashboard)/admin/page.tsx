@@ -60,7 +60,8 @@ export default function AdminDashboardPage() {
   useEffect(() => {
     async function fetchStats() {
       try {
-        const res = await fetch("http://localhost:5000/admin/stats");
+        const res = await fetch("https://zitapi.onrender.com/admin/stats");
+        // const res = await fetch("http://localhost:5000/admin/stats");
         const data = await res.json();
         setStats(data);
       } catch (error) {
@@ -70,7 +71,8 @@ export default function AdminDashboardPage() {
 
     async function fetchAnnouncements() {
       try {
-        const res = await fetch("http://localhost:5000/announcements");
+        const res = await fetch("https://zitapi.onrender.com/announcements");
+        // const res = await fetch("http://localhost:5000/announcements");
         const data = await res.json();
         setAnnouncements(data);
       } catch (err) {
@@ -90,8 +92,10 @@ export default function AdminDashboardPage() {
     try {
       const method = editId ? "PUT" : "POST";
       const endpoint = editId
-        ? `http://localhost:5000/announcements/${editId}`
-        : "http://localhost:5000/announcements";
+        ? `https://zitapi.onrender.com/announcements/${editId}`
+        : "https://zitapi.onrender.com/announcements";
+        // ? `http://localhost:5000/announcements/${editId}`
+        // : "http://localhost:5000/announcements";
 
       const res = await fetch(endpoint, {
         method,
@@ -123,7 +127,8 @@ export default function AdminDashboardPage() {
     const confirmed = confirm("Are you sure?");
     if (!confirmed) return;
     try {
-      await fetch(`http://localhost:5000/announcements/${id}`, {
+      await fetch(`https://zitapi.onrender.com/announcements/${id}`, {
+      // await fetch(`http://localhost:5000/announcements/${id}`, {
         method: "DELETE",
       });
       alert("Deleted");

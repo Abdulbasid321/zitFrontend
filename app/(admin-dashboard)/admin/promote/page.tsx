@@ -44,7 +44,8 @@ export default function PromotionPage() {
 
   const fetchDepartments = async () => {
     try {
-      const res = await axios.get('http://localhost:5000/departments');
+      const res = await axios.get('https://zitapi.onrender.com/departments');
+      // const res = await axios.get('http://localhost:5000/departments');
       setDepartments(res.data);
     } catch {
       toast.error('Failed to fetch departments');
@@ -53,7 +54,8 @@ export default function PromotionPage() {
 
   const fetchStudents = async () => {
     try {
-      const res = await axios.get('http://localhost:5000/students/all');
+      const res = await axios.get('https://zitapi.onrender.com/students/all');
+      // const res = await axios.get('http://localhost:5000/students/all');
       let filtered = res.data as Student[];
 
       if (statusFilter === 'active') {
@@ -74,7 +76,8 @@ export default function PromotionPage() {
 
   const handlePromote = async (studentId: string) => {
     try {
-      await axios.put(`http://localhost:5000/students/${studentId}/promote`);
+      await axios.put(`https://zitapi.onrender.com/students/${studentId}/promote`);
+      // await axios.put(`http://localhost:5000/students/${studentId}/promote`);
       toast.success('Student promoted');
       fetchStudents();
     } catch {
@@ -82,21 +85,10 @@ export default function PromotionPage() {
     }
   };
 
-//   const handlePromoteAll = async () => {
-//     try {
-//       const promotable = students.filter((s) => s.status !== 'completed');
-//       await Promise.all(promotable.map((s) =>
-//         axios.put(`http://localhost:5000/students/${s._id}/promote`)
-//       ));
-//       toast.success('All students promoted');
-//       fetchStudents();
-//     } catch {
-//       toast.error('Bulk promotion failed');
-//     }
-//   };
 const handlePromoteAll = async () => {
   try {
-    await axios.put(`http://localhost:5000/students/promote-all`);
+    await axios.put(`https://zitapi.onrender.com/students/promote-all`);
+    // await axios.put(`http://localhost:5000/students/promote-all`);
     toast.success('All students promoted');
     fetchStudents();
   } catch {

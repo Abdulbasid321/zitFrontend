@@ -21,7 +21,8 @@ const LoginPage = () => {
     setError('');
 
     try {
-      const res = await fetch('http://localhost:5000/parents/login', {
+      const res = await fetch('https://zitapi.onrender.com/parents/login', {
+      // const res = await fetch('http://localhost:5000/parents/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

@@ -61,7 +61,8 @@ export default function StudentForm() {
   async function fetchDepartments() {
     try {
       const res = await axios.get<Department[]>(
-        "http://localhost:5000/departments"
+        "https://zitapi.onrender.com/departments"
+        // "http://localhost:5000/departments"
       );
       setDepartments(res.data);
     } catch {
@@ -74,7 +75,8 @@ export default function StudentForm() {
       const params =
         selectedDept !== "all" ? { departmentId: selectedDept } : {};
       const res = await axios.get<Student[]>(
-        "http://localhost:5000/students/all",
+        "https://zitapi.onrender.com/students/all",
+        // "http://localhost:5000/students/all",
         { params }
       );
       setStudents(res.data);
@@ -91,7 +93,8 @@ export default function StudentForm() {
   async function handleSubmit(e: FormEvent) {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:5000/students/create", formData);
+      await axios.post("https://zitapi.onrender.com/students/create", formData);
+      // await axios.post("http://localhost:5000/students/create", formData);
       toast.success("Student registered successfully");
       setFormData({
         fullName: "",

@@ -17,66 +17,6 @@ const LoginPage = () => {
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
 
-  // const handleLogin = async () => {
-  //   setLoading(true);
-  //   setError('');
-
-  //   try {
-  //     const res = await fetch('http://localhost:5000/students/login', {
-  //       method: 'POST',
-  //       headers: {
-  //         'Content-Type': 'application/json'
-  //       },
-  //       body: JSON.stringify({ email, password })
-  //     });
-
-  //     const data = await res.json();
-
-  //     if (!res.ok) {
-  //       throw new Error(data.error || 'Login failed');
-  //     }
-
-  //     localStorage.setItem('studentToken', data.token);
-  //     router.push('/student'); // Redirect to student dashboard
-  //   } catch (err: any) {
-  //     setError(err.message || 'Something went wrong');
-  //   } finally {
-  //     setLoading(false);
-  //   }
-  // }; 
-//   const handleLogin = async () => {
-//   if (!email || !password) {
-//     setError("Please fill in all fields");
-//     return;
-//   }
-
-//   setLoading(true);
-//   setError('');
-
-//   try {
-//     const res = await fetch('http://localhost:5000/students/login', {
-//       method: 'POST',
-//       headers: {
-//         'Content-Type': 'application/json'
-//       },
-//       body: JSON.stringify({ email, password })
-//     });
-
-//     const data = await res.json();
-
-//     if (!res.ok || !data.token) {
-//       throw new Error(data.error || 'Invalid login credentials');
-//     }
-
-//     localStorage.setItem('studentToken', data.token);
-//     toast.success("Login successful");
-//     router.push('/student'); // Redirect to student dashboard
-//   } catch (err: any) {
-//     setError(err.message || 'Something went wrong');
-//   } finally {
-//     setLoading(false);
-//   }
-// };
 
 const handleLogin = async () => {
   if (!email || !password) {
@@ -87,7 +27,8 @@ const handleLogin = async () => {
   setError('');
 
   try {
-    const res = await fetch('http://localhost:5000/students/login', {
+    const res = await fetch('https://zitapi.onrender.com/students/login', {
+    // const res = await fetch('http://localhost:5000/students/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
