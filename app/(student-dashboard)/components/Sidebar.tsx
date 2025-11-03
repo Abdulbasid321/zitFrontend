@@ -49,9 +49,12 @@ const Sidebar = ({ closeSidebar }: { closeSidebar: () => void }) => {
     { id: 1, name: "Dashboard", path: "/student", icon: LayoutDashboard },
     { id: 2, name: "Profile", path: "/student/studentProfile", icon: UserPenIcon },
     { id: 3, name: "My courses", path: "/student/courses", icon: GraduationCap },
-    { id: 4, name: "Tasks", path: "/results", icon: BookAIcon },
-    { id: 5, name: "school chat", path: "/student/chat", icon: BookAIcon },
-    { id: 6, name: "Results", path: "/student/result", icon: BookAIcon },
+    // { id: 4, name: "Tasks", path: "/results", icon: BookAIcon },
+    // { id: 5, name: "school chat", path: "/student/chat", icon: BookAIcon },
+    { id: 4, name: "Results", path: "/student/result", icon: BookAIcon },
+    { id: 5, name: "Documents", path: "/student/document", icon: BookAIcon },
+    { id: 6, name: "Payment", path: "/student/payment", icon: BookAIcon },
+    { id: 7, name: "History", path: "/student/history", icon: BookAIcon },
   ];
 
   return (

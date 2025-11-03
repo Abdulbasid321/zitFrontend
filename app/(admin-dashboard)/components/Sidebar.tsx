@@ -1,42 +1,3 @@
-// import { BookAIcon, GraduationCap, LayoutDashboard, UserPenIcon, Users } from 'lucide-react';
-// import Link from 'next/link';
-// import React from 'react'
-// import { FaMoneyBill } from 'react-icons/fa';
-// import { MdPayments } from 'react-icons/md';
-// import { PiContactlessPaymentFill } from 'react-icons/pi';
-
-// const Sidebar = ({ closeSidebar }: { closeSidebar: () => void }) => {
-//     const lists = [
-//         { id: 1, name: "Dashboard", path: "", icon: LayoutDashboard },
-//         { id: 2, name: "Profile", path: "", icon: UserPenIcon },
-//         { id: 3, name: "Departments", path: "", icon: GraduationCap },
-//         { id: 4, name: "Courses", path: "", icon: BookAIcon },
-//         { id: 5, name: "Users", path: "", icon: Users },
-//         { id: 7, name: "Result", path: "", icon: BookAIcon },
-//       ];
-//   return (
-//     <div className="border border-gray-600 h-screen p-4 shadow-md bg-white">
-//         <h2 className='text-center text-xl font-bold text-green-700 my-2'>ZIT</h2>
-//         <hr />
-//        <div className='mt-3'>
-//        {lists.map(list=>(
-//             <Link key={list.id} href={list.path} onClick={closeSidebar}>
-//                 <h2 className="flex items-center gap-3 text-md p-3 rounded-xl hover:bg-green-700 text-slate-500 hover:text-white">
-//                     <list.icon/>
-//                     {list.name}
-//                 </h2>
-//             </Link>
-//         ))}
-
-
-//        </div>
-//     </div>
-//   )
-// }
-
-// export default Sidebar
-
-
 import { BookAIcon, GraduationCap, LayoutDashboard, UserPenIcon, Users } from 'lucide-react';
 import Link from 'next/link';
 import React from 'react';
@@ -47,12 +8,15 @@ import { PiContactlessPaymentFill } from 'react-icons/pi';
 const Sidebar = ({ closeSidebar }: { closeSidebar: () => void }) => {
   const lists = [
     { id: 1, name: "Dashboard", path: "/admin", icon: LayoutDashboard },
-    { id: 2, name: "Profile", path: "/admin/profile", icon: UserPenIcon },
+    // { id: 2, name: "Profile", path: "/admin/profile", icon: UserPenIcon },
     { id: 3, name: "Departments", path: "/admin/department", icon: GraduationCap },
     { id: 4, name: "Courses", path: "/admin/courses", icon: BookAIcon },
     { id: 5, name: "Add Students", path: "/admin/addStudent", icon: Users },
     { id: 6, name: "Add Teacher", path: "/admin/addTeacher", icon: MdPayments },
-    { id: 7, name: "Results", path: "/admin/result", icon: BookAIcon },
+    { id: 7, name: "Promote", path: "/admin/promote", icon: MdPayments },
+    { id: 8, name: "Results", path: "/admin/result", icon: BookAIcon },
+    { id: 9, name: "Documents", path: "/admin/documents", icon: BookAIcon },
+    { id: 10, name: "payment", path: "/admin/proofpayment", icon: BookAIcon },
   ];
 
   return (

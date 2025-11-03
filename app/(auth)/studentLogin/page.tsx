@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { FcGoogle } from 'react-icons/fc';
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import { toast } from "react-hot-toast";
 
 const LoginPage = () => {
   const handleGoogleSignIn = () => {
@@ -16,33 +17,105 @@ const LoginPage = () => {
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
 
-  const handleLogin = async () => {
-    setLoading(true);
-    setError('');
+  // const handleLogin = async () => {
+  //   setLoading(true);
+  //   setError('');
 
-    try {
-      const res = await fetch('http://localhost:5000/students/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ email, password })
-      });
+  //   try {
+  //     const res = await fetch('http://localhost:5000/students/login', {
+  //       method: 'POST',
+  //       headers: {
+  //         'Content-Type': 'application/json'
+  //       },
+  //       body: JSON.stringify({ email, password })
+  //     });
 
-      const data = await res.json();
+  //     const data = await res.json();
 
-      if (!res.ok) {
-        throw new Error(data.error || 'Login failed');
-      }
+  //     if (!res.ok) {
+  //       throw new Error(data.error || 'Login failed');
+  //     }
 
-      localStorage.setItem('studentToken', data.token);
-      router.push('/student'); // Redirect to student dashboard
-    } catch (err: any) {
-      setError(err.message || 'Something went wrong');
-    } finally {
-      setLoading(false);
+  //     localStorage.setItem('studentToken', data.token);
+  //     router.push('/student'); // Redirect to student dashboard
+  //   } catch (err: any) {
+  //     setError(err.message || 'Something went wrong');
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // }; 
+//   const handleLogin = async () => {
+//   if (!email || !password) {
+//     setError("Please fill in all fields");
+//     return;
+//   }
+
+//   setLoading(true);
+//   setError('');
+
+//   try {
+//     const res = await fetch('http://localhost:5000/students/login', {
+//       method: 'POST',
+//       headers: {
+//         'Content-Type': 'application/json'
+//       },
+//       body: JSON.stringify({ email, password })
+//     });
+
+//     const data = await res.json();
+
+//     if (!res.ok || !data.token) {
+//       throw new Error(data.error || 'Invalid login credentials');
+//     }
+
+//     localStorage.setItem('studentToken', data.token);
+//     toast.success("Login successful");
+//     router.push('/student'); // Redirect to student dashboard
+//   } catch (err: any) {
+//     setError(err.message || 'Something went wrong');
+//   } finally {
+//     setLoading(false);
+//   }
+// };
+
+const handleLogin = async () => {
+  if (!email || !password) {
+    setError("Please fill in all fields");
+    return;
+  }
+  setLoading(true);
+  setError('');
+
+  try {
+    const res = await fetch('http://localhost:5000/students/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ email, password })
+    });
+
+    const data = await res.json();
+
+    if (!res.ok || !data.token || !data.student) {
+      throw new Error(data.error || 'Invalid login credentials');
     }
-  }; 
+
+    // ✅ Store both token and student info
+    localStorage.setItem('studentToken', data.token);
+    localStorage.setItem('studentInfo', JSON.stringify(data.student));
+    localStorage.setItem("studentRegNumber", data.student.regNumber);
+
+
+    toast.success("Login successful");
+    router.push('/student'); // Redirect to student dashboard
+  } catch (err: any) {
+    setError(err.message || 'Something went wrong');
+  } finally {
+    setLoading(false);
+  }
+};
+
   return (
     <div className="w-full max-w-md">
       <h1 className="text-2xl md:4xl font-bold text-green-600 mb-6 text-center">Welcome Back To Student Login</h1>
