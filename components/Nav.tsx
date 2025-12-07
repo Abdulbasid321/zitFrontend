@@ -173,12 +173,12 @@ const links = [
                 >
                   Student Login
                 </Link>
-                <Link
+                {/* <Link
                   href="/teacherLogin"
                   className="block px-4 py-2 hover:bg-gray-100 text-sm text-gray-700"
                 >
                   Lecturer Login
-                </Link>
+                </Link> */}
               </motion.div>
             )}
           </AnimatePresence>
