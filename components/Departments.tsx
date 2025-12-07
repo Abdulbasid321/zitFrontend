@@ -12,7 +12,7 @@ const departments = [
   },
   {
     id: 2,
-    name: "Electrical Engineering",
+    name: "Software Engineering",
     icon: <Atom className="text-green-600 w-10 h-10" />,
     desc: "Master circuit design, embedded systems, and renewable energy technologies.",
   },

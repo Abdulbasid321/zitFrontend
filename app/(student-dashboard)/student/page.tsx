@@ -51,8 +51,6 @@ export default function StudentDashboard() {
         <Card icon={<ClipboardList />} title="GPA (Last Semester)" value="3.45" />
         <Card icon={<CalendarCheck />} title="Attendance" value="85%" />
       </div>
-
-
 <div className="bg-white p-6 rounded-lg shadow">
   <h3 className="text-lg font-medium flex items-center gap-2 mb-4">
     <Megaphone className="text-orange-500" />
