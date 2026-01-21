@@ -38,7 +38,8 @@ const RegisterPage = () => {
     setLoading(true);
 
     try {
-      await axios.post('http://localhost:8000/api/register', {
+      await axios.post('https://zitapi.onrender.com/api/register', {
+    //   await axios.post('http://localhost:8000/api/register', {
         fullName,
         program,
         accountNumber,

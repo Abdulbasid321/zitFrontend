@@ -25,7 +25,8 @@ const AdminRegistrationsPage = () => {
   const fetchRegistrations = async () => {
     try {
       const res = await axios.get(
-        'http://localhost:8000/api/register'
+        'https://zitapi.onrender.com/api/register'
+        // 'http://localhost:8000/api/register'
       );
       setRegistrations(res.data);
     } catch (err) {
