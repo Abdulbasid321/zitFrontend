@@ -120,7 +120,7 @@ const RegisterPage = () => {
         />
 
         <label className="block text-sm font-medium mb-2">
-          Enter 8-Digit Confirmation Code
+          Enter 8-Digit Confirmation Code to link Your Whatsap via whatsap setting.
         </label>
 
         <div className="flex justify-between gap-2 mb-6">
